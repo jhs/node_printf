@@ -1,0 +1,12 @@
+h1. Node Printf
+
+This is a very simple Node addon to provide printf() and sprintf() functionality
+in Javascript.
+
+h2. Building
+
+  node-waf configure build
+
+h2. Usage
+
+Who knows?

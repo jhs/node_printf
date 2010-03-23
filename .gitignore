@@ -1,1 +1,5 @@
 .*.swp
+.lock-wscript
+binding.o
+binding.node
+build/
