@@ -3,8 +3,7 @@ var binding = require("./binding"),
 
 var Printf = new binding.Printf;
 
-exports.sprintf = function(format) {
-  sys.puts('sprintf with ' + sys.inspect(format));
-  //return p.sprintf(format);
-  return Printf.sprintf(format);
+exports.sprintf = function() {
+  sys.puts("printf.js sprintf: " + sys.inspect(arguments));
+  return Printf.sprintf(Array.prototype.slice.call(arguments));
 };

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdarg.h>
 #include <node.h>
 #include <node_events.h>
 #include <assert.h>
@@ -62,13 +63,19 @@ class Printf : public EventEmitter {
 
     HandleScope scope;
 
-    if (args.Length() == 0 || !args[0]->IsString()) {
-      return ThrowException(String::New("Must give string as argument"));
+    if (args.Length() == 0 || !args[0]->IsArray()) {
+      return ThrowException(String::New("Must give array as first argument"));
     }
 
     char result[4096];
     // Convert the format to an ASCII string.
-    String::AsciiValue ascii((args[0]->ToString()));
+    Array *real_args = Array::Cast(args[0]);//args[0]->ToObject();
+
+  //Initialize (v8::Handle<v8::Object> target)
+
+    //String::AsciiValue ascii(args[0]->[0]->ToString());
+    const char *ascii = ToCString(real_args[0]);
+
     int count = snprintf(result, 4096, *ascii);
     return String::New(result);
   }
