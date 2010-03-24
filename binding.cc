@@ -41,11 +41,6 @@ class Printf : public EventEmitter {
     target->Set(String::NewSymbol("Printf"), t->GetFunction());
   }
 
-  int js_snprintf(char *format)
-  {
-    return 23;
-  }
-
  protected:
 
   static Handle<Value>
